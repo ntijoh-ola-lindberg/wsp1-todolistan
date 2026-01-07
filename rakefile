@@ -1,32 +1,31 @@
 require_relative 'config'
 require 'rake'
 
-desc "Start Sinatra app (auto-reload enabled via sinatra-reloader)"
+desc "Starta appen (Auto-reload via sinatra-reloader)"
 task :dev do
+  puts "🧹 Rensar port 9292..."
+  # Dödar gamla processer för att slippa EADDRINUSE
+  sh 'lsof -ti:9292 | xargs kill -9 > /dev/null 2>&1 || true'
+  
+  puts "🚀 Startar på http://localhost:9292"
   sh 'bundle exec rackup --host 0.0.0.0'
 end
 
-desc "Fill the database with initial data from the seeder file"
+desc "Seedning av databasen"
 task :seed do
   require_relative './db/seeder'
-  Seeder.seed! if defined?(Seeder)
-  puts "✅ Database done seeding!"
+  Seeder.seed!
+  puts "✅ Databasen är återställd!"
 end
 
-desc "Default task: seeds database if no db file exists, then start dev server"
+# Default task som körs när man bara skriver 'rake'
 task default: [] do
   if !File.exist?(DB_PATH)
-    puts "📦 No database found - running seed task..."
     Rake::Task[:seed].invoke
-  else
-    puts "🚀 Database found - starting app..."
   end
   Rake::Task[:dev].invoke
 end
 
-desc "Kill any ghost processes running on the default port (9292)"
 task :kill do
-  puts "Stopping any processes on port 9292..."
   sh 'lsof -ti:9292 | xargs kill -9 > /dev/null 2>&1 || true'
-  puts "✨ Port 9292 is now clear."
 end
