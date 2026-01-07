@@ -5,24 +5,31 @@ Enskillt projekt under andra halvan av höstterminen 2024 i kursen Webbserverpro
 Du kommer att bygga en TODO-lista som en webbapplikation med av de tekniker vi har lärt oss i kursen Webbserverprogrammering. Under projektet kommer vi ha genomgångar för fler tekniker (som t.ex. inloggning). På vägen kommer du få kommer tips för hur du kan göra koden snyggare, bättre och lättare att hantera.
 
 ![Exempel på ToDo applikation](docs/img/todo-app.png)  
-*Exempel på hur en ToDo-applikation kan se ut*
+*Exempel på hur en ToDo-applikation kan se ut. Du måste **inte** göra kategorier.*
+
+## Lärandemål
+- Förstå hur de olika delarna i webbappen hänger ihop
+- Kunna förklara alla steg när en användare ändrar informationen för en ToDo
+- Förbereda dig för slutprojektet nästa termin
 
 ## Specifikation
-- Webbapplikation i Ruby med Sinatra och SQLite.
-- Individuellt projekt.
-- Ta insipration från hur du gjorde i Fruktsidan (för att t.ex. skapa seeder-filen).
+- Webbapplikation i `Ruby` med `Sinatra` och `SQLite`
+- Individuellt projekt
+- Ta insipration från Fruktsidan
 - Skapa en användare på Github med namnet: ntijoh-fornamn-efternamn.
 - Forka detta repot: https://github.com/ntijoh-ola-lindberg/wsp1-todolistan och arbeta i för ditt projekt. Bjud in mig (ntijoh-ola-lindberg) till ditt repository.
 - I slutet på varje lektion lägger ni upp koden ni skrivit till Github.
 - Ni skriver i loggboken varje vecka.
 - Ni får feedback av mig genom hela projektet. Främst på lektioner och i loggboken - kanske även via Github.
 - Vid slutinlämning: Lämna in en liten film på classroom som visar applikationen.
-- Bedömning: F/E enligt beskrivning: https://github.com/ntijoh/WTF24/blob/main/Bed%C3%B6mning%20Webbserver%201.md
+- Bedömning: F/E 
 
 ## Installation
 
-- Ladda ner de biblotek (tex. SQLite) du behöver med `bundle` (eller `bundle install` som är samma sak)
-- Starta appen med `rake` Då körs även seed automatiskt ifall ingen databasfil finns.
-- Kör seeder-filen med `rake seed` för att återställa databasen från seed-filen.
+1. `bundle install` | Installerar de biblotek (tex. SQLite) du behöver
+2. `rake` | Startar appen. Finns det ingen databas skapas en ny i `db/sqlite.db`
+3. `ctrl + c` | Stänger webbservern
+4. `rake seed` | Återställer databasen från seed-filen
+5. `rake kill` | Stänger av alla Ruby om du t.ex. har problem att få igång webbservern med felmeddelande ungefär som `Address already in use - bind(2) for 0.0.0.0:9292` 
 
-Använd verktyget SQLite Viewer: https://marketplace.visualstudio.com/items?itemName=qwtel.sqlite-viewer eller DB Browser för att arbeta fram och testa SQL-kod.
+Använd verktyget `DB Browser for SQLite` för att titta på, arbeta fram och testa SQL-kod.
