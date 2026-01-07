@@ -1,5 +1,5 @@
 # Webbserverprogrammering 1 - Projekt #2
-Enskillt projekt under andra halvan av höstterminen 2024 i kursen Webbserverprogrammering 1 på NTI Johanneberg.
+Enskillt projekt under andra halvan av höstterminen i kursen Webbserverprogrammering 1 på NTI Johanneberg.
 
 ## Uppgiftsbeskrivning
 Du kommer att bygga en TODO-lista som en webbapplikation med av de tekniker vi har lärt oss i kursen Webbserverprogrammering. Under projektet kommer vi ha genomgångar för fler tekniker (som t.ex. inloggning). På vägen kommer du få kommer tips för hur du kan göra koden snyggare, bättre och lättare att hantera.
