@@ -1,1 +1,22 @@
-<img src="/img/glhf.png">
+
+<%= erb :'todos/_list', locals: { todos: @todos } %>
+
+<section class="new-todo">
+    <h1>Ny <span class="logo">todo!</span></h1>
+    <article class="todos new-todo">
+    <form action="/todos" method="post">
+        <label>Titel <input type="text" name="todo_title" /></label>
+        <label>Beskrivning <input type="text" name="todo_description"></label>
+        <label>Kategori:
+            <select name="category_id">
+            <% @categories.each do | c | %>
+            <option value="<%=c['id']%>"> <%=c['category_title']%></option>
+                <% end %>
+            </select>
+        </label>
+
+        <input type="submit" value="Spara">
+    </form>
+    </article>
+</section>
+

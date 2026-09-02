@@ -1,0 +1,20 @@
+<article class="todoitem category-id-<%= todo['category_id'] %>">
+    <h2><%= todo['todo_title'] %></h2>
+    <p><%= todo['todo_description'] %></p>
+    <p class="edit-category-link"><a href="/categories/<%= todo['id'] %>"><em><%= todo['category_title'] %></em></a></p>
+    <section class="todo-controls">
+        <form action="/todos/<%= todo['id']%>/delete" method="post">
+            <input type="submit" value="Ta bort">
+        </form>
+        <% if todo['is_completed'] == 0 %>
+            <form action="/todos/<%= todo['id'] %>/toggle-completion" method="post">
+                <input type="submit" value="Färdig">
+            </form>
+        <% else %>
+            <form action="/todos/<%= todo['id'] %>/toggle-completion" method="post">
+                <input type="submit" value="Ofärdig">
+            </form>
+        <% end %>
+        <a href="/todos/<%= todo['id']%>/edit" class="button">Ändra</a>
+    </section>
+</article>

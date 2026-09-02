@@ -1,7 +1,125 @@
 body {
-  font-family: sans-serif;
-  color: #666;
-  background-color: #f1f1f1;
-  font-size: x-large;
-  margin: 1em;
+    background-color: forestgreen;
+    color: wheat;
+    font-family: 'Comic Sans MS', cursive;
+    margin: 1em;
+}
+
+img {
+    display: block;
+}
+
+nav {
+    background-color: darkseagreen;
+    padding: 0.5em;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    display: inline-block;
+}
+
+main {
+    display: flex;
+    gap: 1em;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+article.todos {
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+}
+
+section h1 {
+    margin-bottom: 0.2em;
+}
+
+article.todoitem {
+    background-color: wheat;
+    display: inline-block;
+    padding: 1em;
+    color: forestgreen;
+    width: 10em;
+}
+
+article.todoitem h2 {
+    margin: 0;
+}
+
+.edit-category-link,
+.edit-category-link em,
+.edit-category-link a {
+    font-family: courier;
+    font-style: normal;
+    font-weight: normal;
+    color: darkolivegreen;
+    text-decoration: none;
+}
+
+.edit-category-link a:hover {
+    text-decoration: underline;
+}
+
+article.todoitem p {
+    margin: 0;
+}
+
+.todo-controls {
+    display: flex;
+    gap: 0.1em;
+}
+
+.new-category form,
+.new-category input,
+.new-todo form,
+.new-todo input {
+    display: block;
+    width: 100%;
+}
+
+article.new-todo,
+article.categories,
+article.new-category,
+article.edit-category,
+article.update_todo {
+    background-color: lightseagreen;
+    padding: 1em;
+    width: 300px;
+}
+
+.categories form {
+    display: inline-block;
+}
+
+.categories li {
+    display: block;
+}
+
+input {
+    box-sizing: border-box;
+}
+
+article.category-id-1 {
+    background-color: burlywood;
+}
+
+article.category-id-2 {
+    background-color: paleturquoise;
+}
+
+article.category-id-3 {
+    background-color: cornflowerblue;
+}
+article.category-id-4 {
+    background-color: lightpink;
 }

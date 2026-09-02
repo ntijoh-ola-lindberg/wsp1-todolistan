@@ -1,20 +1,96 @@
+require 'awesome_print'
 require 'debug'
-require "awesome_print"
+require_relative 'models/base_model'
+require_relative 'models/todo'
+require_relative 'models/category'
 
 class App < Sinatra::Base
-    register Sinatra::Reloader
+  register Sinatra::Reloader
 
-    def db
-      return @db if @db
+  def db
+    return @db if @db
 
-      @db = SQLite3::Database.new(DB_PATH)
-      @db.results_as_hash = true
+    @db = SQLite3::Database.new(DB_PATH)
+    @db.results_as_hash = true
 
-      return @db
+    @db
+  end
+
+  get '/' do
+    redirect('/todos')
+  end
+
+  get '/todos' do
+    @todos = Todo.all
+    @categories = Category.all
+    erb :'todos/index'
+  end
+
+  post '/todos' do
+    is_completed = 0 #New ToDos cannot be completed
+    Todo.create(params['todo_title'],
+                params['todo_description'],
+                is_completed,
+                params['category_id'])
+
+    redirect '/'
+  end
+
+  post '/todos/:id/toggle-completion' do |id|
+    Todo.toggle_completion(id)
+    redirect '/'
+  end
+
+  get '/todos/:id/edit' do |id|
+    @todo = Todo.find(id)
+    @categories = Category.all
+
+    erb :'todos/edit'
+  end
+
+  post '/todos/:id/update' do |id|
+
+    # Checkbox is_completed is only passed from html form if it is checked
+    if params.has_key?('is_completed')
+      is_completed = 1
+    else
+      is_completed = 0
     end
 
-    get '/' do        
-        erb(:'todos/index')
-    end
+    Todo.update(id, params['todo_title'], params['todo_description'], is_completed, params['category_id'])
+    redirect '/'
+  end
 
+  post '/todos/:id/delete' do |id|
+    Todo.destroy(id)
+    redirect '/'
+  end
+
+  get '/categories' do
+    @categories = Category.all
+    erb :'categories/index'
+  end
+
+  get '/categories/:id/edit' do |id|
+    @category = Category.find(id)
+    @todos = Todo.all_by_category_id(id)
+    @categories = Category.all
+
+    erb :'categories/edit'
+  end
+
+  post '/categories/:id/update' do |id|
+    Category.update(id, params['category_title'])
+    redirect '/'
+  end
+
+  post '/categories/:id/delete' do |id|
+    Category.destroy(id)
+    redirect '/categories'
+  end
+
+  post '/categories' do
+    Category.create(params['category_title'])
+    redirect '/categories'
+  end
 end

@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todolistan</title>
-    <link rel="stylesheet" type="text/css" href="/style.css">
+    <title>ToDos!</title>
+    <link rel="stylesheet" type="text/css" href="/style.css?<%=Time.now.to_i%>">
 </head>
 <body>
-  <%= yield %>
+  <nav>
+    <ul id="main-menu">
+      <li><a href="/">ToDos</a></li>
+      <li><a href="/categories">Kategorier</a></li>
+    </ul>
+  </nav>
+  <main>
+    <%= yield %>
+  </main>
 </body>
 </html>

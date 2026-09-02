@@ -1,0 +1,18 @@
+<section>
+    <h1>Ändra kategori</h1>
+    <article class="edit-category">
+        <form action="/categories/<%= @category['id']%>/update" method="post">
+            <label>Kategori <input type="text" id="<%= @category['id'] %>" name="category_title" value="<%= @category['category_title'] %>" /></label>
+            <input type="submit" value="Färdig">
+        </form>
+    </article>
+</section>
+
+<section class="todos">
+    <h1>Alla ToDos i kategorien</h1>
+    <article>
+        <%= erb :'todos/_list', locals: { todos: @todos } %>
+
+
+    </article>
+</section>
